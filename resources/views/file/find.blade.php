@@ -84,10 +84,12 @@
         @foreach ($files as $file)
             <div class="col-md-6 col-lg-4 mb-3">
                 <div class="card h-100">
+                  <a class="card h-100" href="{{ route('file.file-open', ['path' => str_replace($main_path, '', $file) ]) }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ str_replace('/', '', str_replace($file_path, '', $file)) }}</h5>
                       {{-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> --}}
                     </div>
+                  </a>
                     <a class="card h-100" href="{{ route('file.file-open', ['path' => str_replace($main_path, '', $file) ]) }}">
                     @if (explode('/', getMimeType($file))[0] == 'image')
                         <img class="img-fluid"
@@ -135,6 +137,7 @@
             'swf' => 'application/x-shockwave-flash',
             'flv' => 'video/x-flv',
             'mkv' => 'video/mkv',
+            'mp4' => 'video/mp4',
     
             // images
             'png' => 'image/png',
