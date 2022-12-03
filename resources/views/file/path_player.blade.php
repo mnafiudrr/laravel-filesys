@@ -36,9 +36,9 @@
 
 
     <div class="col-12">
-      <div class="card overflow-hidden">
+      <div class="card">
           {{-- <h5 class="card-header">Vertical & Horizontal Scrollbars</h5> --}}
-            <div class="card-body">
+            {{-- <div class="card-body"> --}}
                 @if ($type == 'image')
                     <img src="{{ route('uploads.index', [
                         'path' => str_replace($main_path, '', $file_path)
@@ -54,7 +54,7 @@
                       Your browser does not support the video tag.
                     </video>
                 @endif
-            </div>
+            {{-- </div> --}}
       </div>
     </div>
 @endsection

@@ -96,7 +96,7 @@
                             src="{{ route('uploads.index', [
                                 'path' => str_replace($main_path, '', $file),
                             ]) }}"
-                            alt="Card image cap" style="height:430px; width: auto;   background-position: center center;" height="500" />
+                            alt="Card image cap" style="height:450px; width: 450px;   background-position: center center;" />
                     @elseif (explode('/', getMimeType($file))[0] == 'video')
                     
                       <video class="img-fluid" preload="metadata">
