@@ -64,6 +64,8 @@
             </a>
         </li>
 
+        @auth
+
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -100,6 +102,21 @@
                 </li>
             </ul>
         </li>
+
+
+        <!-- Components -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
+        <!-- Cards -->
+        <li class="menu-item">
+            <a href="cards-basic.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Products</div>
+            </a>
+        </li>
+
+        @endauth
+
+        @guest
 
         <li class="menu-header small text-uppercase">
           <span class="menu-header-text">Templates</span>
@@ -411,5 +428,7 @@
                 <div data-i18n="Documentation">Documentation</div>
             </a>
         </li>
+
+        @endguest
     </ul>
 </aside>

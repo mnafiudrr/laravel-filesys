@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\UploadController;
@@ -38,3 +39,8 @@ Route::group(['prefix' => "file", "as" => "file"], function (){
 Route::get('uploads/find', [UploadController::class, 'find'])->name('find');
 Route::get('uploads/{id}', [UploadController::class, 'show'])->name('uploads');
 Route::get('uploads', [UploadController::class, 'index'])->name('uploads.index');
+
+Route::get('login', [AuthController::class, 'index'])->name('login.index');
+Route::post('login', [AuthController::class, 'checkUser'])->name('login.check');
+Route::get('register', [AuthController::class, 'register'])->name('register.index');
+Route::post('register', [AuthController::class, 'createUser'])->name('register.create');

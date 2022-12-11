@@ -19,11 +19,18 @@
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- Place this tag where you want the button to render. -->
+
+            @guest
+                
             <li class="nav-item lh-1 me-3">
-                <a class="github-button" href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    data-icon="octicon-star" data-size="large" data-show-count="true"
-                    aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
+                <a class="github-button" href="{{ route('login.index') }}"
+                data-icon="octicon-star" data-size="large" data-show-count="true"
+                aria-label="">Login</a>
             </li>
+            
+            @endguest
+
+            @auth
 
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -86,6 +93,8 @@
                 </ul>
             </li>
             <!--/ User -->
+
+            @endauth
         </ul>
     </div>
 </nav>
