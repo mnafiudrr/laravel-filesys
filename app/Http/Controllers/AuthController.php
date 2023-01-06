@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use stdClass;
 
 class AuthController extends Controller
 {
@@ -18,6 +19,7 @@ class AuthController extends Controller
     public function index()
     {
         //
+        // dd(Hash::make('nafiu'));
 
         if (Auth::check()) {
             return redirect()->route('home');
@@ -33,7 +35,7 @@ class AuthController extends Controller
         }
 
         $validator = $request->validate([
-            'email'     => 'required|email',
+            'email'     => 'required',
             'password'  => 'required',
         ],[
             'email.required'    => 'Email tidak boleh kosong.',
@@ -44,11 +46,20 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         
+        // dd($user = User::where('name', $request->email)->first());
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('home');
         } else {
-            return redirect()->back()->with('error', 'Email atau Password salah.');
+            if (Auth::attempt([
+                'name' => $request->email,
+                'password' => $request->password
+            ])) {
+                $request->session()->regenerate();
+                return redirect()->route('home');
+            } else {
+                return redirect()->back()->with('error', 'Email atau Password salah.');
+            }
         }
     }
 
@@ -75,7 +86,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
             DB::commit();
-            return redirect()->route('login.index');
+            return redirect()->route('login');
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());

@@ -12,7 +12,7 @@
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search fs-4 lh-0"></i>
                 <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                    aria-label="Search..." />
+                    aria-label="Search..." name="main-search" id="main-search" />
             </div>
         </div>
         <!-- /Search -->
@@ -23,7 +23,7 @@
             @guest
                 
             <li class="nav-item lh-1 me-3">
-                <a class="github-button" href="{{ route('login.index') }}"
+                <a class="github-button" href="{{ route('login') }}"
                 data-icon="octicon-star" data-size="large" data-show-count="true"
                 aria-label="">Login</a>
             </li>
@@ -85,7 +85,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>

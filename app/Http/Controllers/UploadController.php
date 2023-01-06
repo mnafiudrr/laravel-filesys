@@ -20,6 +20,13 @@ class UploadController extends Controller
         return response()->file($file_path);
     }
 
+    public function product($file)
+    {
+        //
+        $file_path = public_path('../uploads/product/'.$file);
+        return response()->file($file_path);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,6 +46,10 @@ class UploadController extends Controller
     public function store(Request $request)
     {
         //
+        $extheader = $request->file('file')->getClientOriginalExtension();
+        $filename = time().'.'.$extheader;
+        $request->file('file')->move('../uploads/source/'.$request->path, $filename);
+        return response()->json(['success' => $filename]);
     }
 
     /**
